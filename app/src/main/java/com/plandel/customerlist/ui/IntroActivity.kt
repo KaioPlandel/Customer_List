@@ -1,10 +1,10 @@
-package com.plandel.customerlist
+package com.plandel.customerlist.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.plandel.customerlist.ui.CustomerActivity
+import com.plandel.customerlist.R
 
 class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
