@@ -9,4 +9,9 @@
     <string name="button_add_client">Add</string>
     <string name="create_a_customer">Create a Customer</string>
     <string name="loading">Loading</string>
+    <string name="icon_person">icon_person</string>
+    <string name="icon_email">icon_email</string>
+    <string name="icon_phone">icon_phone</string>
+    <string name="menu_back">menu_back</string>
+    <string name="icon_menu_profile">icon_menu_profile</string>
 </resources>

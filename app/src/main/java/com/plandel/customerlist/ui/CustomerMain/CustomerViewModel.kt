@@ -1,5 +1,6 @@
 package com.plandel.customerlist.ui.CustomerMain
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.plandel.customerlist.model.CustomerItem
@@ -11,8 +12,9 @@ import retrofit2.Response
 class CustomerViewModel constructor(private val repository: CustomerRepository) : ViewModel() {
 
     val listOfCustomers = MutableLiveData<List<CustomerItem>>()
-    val errorMensage = MutableLiveData<String>()
+    val errorMessage = MutableLiveData<String>()
     val loading = MutableLiveData<Boolean>()
+    val errorScreen = MutableLiveData<Boolean>()
 
     fun getAllCustomers() {
 
@@ -25,15 +27,21 @@ class CustomerViewModel constructor(private val repository: CustomerRepository) 
             ) {
                 if (response.isSuccessful) {
                     loading.postValue(false)
+                    Log.d("TAG", "onResponse: " + response.message())
+                    listOfCustomers.postValue(response.body())
+                    errorScreen.postValue(false)
                 } else {
                     loading.postValue(false)
-                    errorMensage.postValue(response.message())
+                    Log.d("TAG", "onResponse2: " + response.message())
+                    errorMessage.postValue(response.message())
+                    errorScreen.postValue(true)
                 }
             }
 
             override fun onFailure(call: Call<List<CustomerItem>>, t: Throwable) {
                 loading.postValue(false)
-                errorMensage.postValue(t.message)
+                errorMessage.postValue(t.message)
+                errorScreen.postValue(true)
             }
 
         })
