@@ -3,4 +3,10 @@
     <string name="logo_customer_list">Logo Customer List</string>
     <string name="button_new_client">Button New Client</string>
     <string name="error_message">ops, something went wrong \n try again later</string>
+    <string name="name">Name</string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="button_add_client">Add</string>
+    <string name="create_a_customer">Create a Customer</string>
+    <string name="loading">Loading</string>
 </resources>
