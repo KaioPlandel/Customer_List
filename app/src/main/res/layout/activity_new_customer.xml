@@ -93,6 +93,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editEmail"
+                    android:inputType="textWebEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -133,6 +134,7 @@
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

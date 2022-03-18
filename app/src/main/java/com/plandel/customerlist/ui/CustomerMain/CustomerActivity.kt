@@ -25,15 +25,17 @@ class CustomerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCustomerBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        viewModel = ViewModelProvider(this, CustomerViewModelFactory(CustomerRepository(retrofitService))).get(CustomerViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            CustomerViewModelFactory(CustomerRepository(retrofitService))
+        ).get(CustomerViewModel::class.java)
 
 
         setupListeners()
         setupRecyclerView()
-        viewModel.getAllCustomers()
+        setupObservers()
 
     }
-
 
     override fun onStart() {
         super.onStart()
@@ -42,29 +44,34 @@ class CustomerActivity : AppCompatActivity() {
             adapter.setData(it)
         })
 
+        viewModel.getAllCustomers()
+
+    }
+
+    private fun setupObservers() {
         viewModel.errorMessage.observe(this, Observer {
-            Toast.makeText(this, it,Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
         })
 
         viewModel.loading.observe(this, Observer {
-            if(it){
+            if (it) {
                 showProgressBar()
-            }else {
+            } else {
                 hideProgressBar()
             }
         })
 
         viewModel.errorScreen.observe(this, Observer {
 
-            if(it){
+            if (it) {
                 showScreenError()
-            }else {
+            } else {
                 hideScreenError()
             }
 
         })
-
     }
+
 
     private fun hideScreenError() {
         binding.recyclercustomer.visibility = View.VISIBLE
@@ -102,7 +109,8 @@ class CustomerActivity : AppCompatActivity() {
 
         binding.buttonReload.setOnClickListener {
             binding.progressMenu.visibility = View.VISIBLE
-            viewModel.getAllCustomers() }
+            viewModel.getAllCustomers()
+        }
 
     }
 }

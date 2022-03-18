@@ -52,22 +52,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
-            <ProgressBar
-                android:id="@+id/progressMenu"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                app:layout_constraintBottom_toBottomOf="@+id/recyclercustomer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recyclercustomer" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutError"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:background="@drawable/body_border_top"
                 android:orientation="vertical"
-                android:visibility="gone"
+
+
                 >
 
                 <TextView
@@ -85,8 +78,8 @@
 
                 <ImageView
                     android:id="@+id/buttonReload"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:contentDescription="@string/loading"
                     android:src="@drawable/ic_reload"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -94,9 +87,19 @@
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textError"
-                    app:layout_constraintVertical_bias="0.07" />
+                    app:layout_constraintVertical_bias="0.107" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@+id/progressMenu"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="@+id/recyclercustomer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/recyclercustomer"
+                app:layout_constraintVertical_bias="0.65999997" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,7 +5,8 @@
       <map>
         <entry key="..\:/CustomerList/app/src/main/res/drawable-v24/background_field.xml" value="0.1" />
         <entry key="..\:/CustomerList/app/src/main/res/drawable-v24/body_border_top.xml" value="0.1" />
-        <entry key="..\:/CustomerList/app/src/main/res/layout/activity_customer.xml" value="0.2" />
+        <entry key="..\:/CustomerList/app/src/main/res/layout/activity_customer.xml" value="0.4" />
+        <entry key="..\:/CustomerList/app/src/main/res/layout/activity_intro.xml" value="0.24427083333333333" />
         <entry key="..\:/CustomerList/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/CustomerList/app/src/main/res/layout/activity_new_customer.xml" value="0.264" />
         <entry key="..\:/CustomerList/app/src/main/res/layout/list_customer_adapter.xml" value="0.23229166666666667" />
