@@ -1,10 +1,10 @@
-package com.plandel.customerlist.ui
+package com.plandel.customerlist.ui.CustomerMain
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.plandel.customerlist.R
 import com.plandel.customerlist.databinding.ActivityCustomerBinding
+import com.plandel.customerlist.ui.newCustomer.NewCustomerActivity
 
 
 class CustomerActivity : AppCompatActivity() {

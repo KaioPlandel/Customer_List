@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary"
-        tools:context=".ui.CustomerActivity">
+        tools:context=".ui.CustomerMain.CustomerActivity">
 
         <ImageView
             android:layout_width="120dp"
@@ -81,8 +80,8 @@
                     android:id="@+id/buttonReload"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_reload"
-                    android:contentDescription="@string/loading" />
+                    android:contentDescription="@string/loading"
+                    android:src="@drawable/ic_reload" />
 
             </LinearLayout>
 

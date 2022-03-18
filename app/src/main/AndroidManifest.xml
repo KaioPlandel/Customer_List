@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomerList">
         <activity
-            android:name=".ui.NewCustomerActivity"
+            android:name=".ui.newCustomer.NewCustomerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.CustomerActivity"
+            android:name=".ui.CustomerMain.CustomerActivity"
             android:exported="false" />
         <activity
             android:name=".ui.IntroActivity"
