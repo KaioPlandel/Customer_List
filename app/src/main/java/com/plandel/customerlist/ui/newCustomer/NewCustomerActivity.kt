@@ -11,6 +11,7 @@ import com.plandel.customerlist.api.RetrofitService
 import com.plandel.customerlist.databinding.ActivityNewCustomerBinding
 import com.plandel.customerlist.model.CustomerItem
 import com.plandel.customerlist.repository.CustomerRepository
+import com.plandel.customerlist.util.Validator
 
 
 class NewCustomerActivity : AppCompatActivity() {
@@ -51,41 +52,23 @@ class NewCustomerActivity : AppCompatActivity() {
 
         binding.buttonAddClient.setOnClickListener {
 
-            disableInputsAndClick()
-            Log.d("TAG," ,"setupListeners: click")
-            var name = binding.editName.text.toString()
-            var email = binding.editEmail.text.toString()
-            var phone = binding.editPhone.text.toString()
+            Log.d("TAG,", "setupListeners: click")
+            val name = binding.editName.text.toString()
+            val email = binding.editEmail.text.toString()
+            val phone = binding.editPhone.text.toString()
 
-            if (checkInputs(name, email, phone)) {
+            if (Validator.checkInputs(name, email, phone)) {
+                disableInputsAndClick()
                 binding.progressSave.visibility = View.VISIBLE
-                var newCustomer = CustomerItem(email, "", name, phone)
+                val newCustomer = CustomerItem(email, "", name, phone)
                 viewModel.addNewCustomer(newCustomer)
+            } else {
+                Toast.makeText(this, "fill out all fields correctly", Toast.LENGTH_SHORT).show()
             }
         }
 
         binding.buttonBack.setOnClickListener { finish() }
 
-    }
-
-    private fun checkInputs(name: String, email: String, phone: String): Boolean {
-
-        if (!name.isEmpty()) {
-            if (!email.isEmpty() && email.contains("@")) {
-                if (!phone.isEmpty()) {
-                    return true
-                } else {
-                    Toast.makeText(this, "fill in the phone field!", Toast.LENGTH_SHORT).show()
-                    return false
-                }
-            } else {
-                Toast.makeText(this, "fill in the email field!", Toast.LENGTH_SHORT).show()
-                return false
-            }
-        } else {
-            Toast.makeText(this, "fill in the name field!", Toast.LENGTH_SHORT).show()
-            return false
-        }
     }
 
     private fun disableInputsAndClick() {

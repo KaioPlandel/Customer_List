@@ -14,4 +14,7 @@
     <string name="icon_phone">icon_phone</string>
     <string name="menu_back">menu_back</string>
     <string name="icon_menu_profile">icon_menu_profile</string>
+    <string name="customer">Customer</string>
+    <string name="update">update</string>
+    <string name="button_delete">button_delete</string>
 </resources>

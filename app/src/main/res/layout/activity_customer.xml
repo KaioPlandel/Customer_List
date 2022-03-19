@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:visibility="gone"
                 android:background="@drawable/body_border_top"
                 android:orientation="vertical"
 
@@ -98,8 +99,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/recyclercustomer"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/recyclercustomer"
-                app:layout_constraintVertical_bias="0.65999997" />
+                app:layout_constraintTop_toTopOf="@+id/recyclercustomer" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

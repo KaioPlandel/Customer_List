@@ -72,6 +72,25 @@ class CustomerActivity : AppCompatActivity() {
         })
     }
 
+    private fun setupRecyclerView() {
+
+        binding.recyclercustomer.layoutManager = LinearLayoutManager(this)
+        binding.recyclercustomer.adapter = adapter
+    }
+
+    private fun setupListeners() {
+        binding.buttonNewClient.setOnClickListener {
+            Intent(this, NewCustomerActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+        binding.buttonReload.setOnClickListener {
+            binding.progressMenu.visibility = View.VISIBLE
+            viewModel.getAllCustomers()
+        }
+
+    }
 
     private fun hideScreenError() {
         binding.recyclercustomer.visibility = View.VISIBLE
@@ -92,25 +111,5 @@ class CustomerActivity : AppCompatActivity() {
     private fun hideProgressBar() {
         binding.progressMenu.visibility = View.GONE
         binding.recyclercustomer.visibility = View.VISIBLE
-    }
-
-    private fun setupRecyclerView() {
-
-        binding.recyclercustomer.layoutManager = LinearLayoutManager(this)
-        binding.recyclercustomer.adapter = adapter
-    }
-
-    private fun setupListeners() {
-        binding.buttonNewClient.setOnClickListener {
-            Intent(this, NewCustomerActivity::class.java).also {
-                startActivity(it)
-            }
-        }
-
-        binding.buttonReload.setOnClickListener {
-            binding.progressMenu.visibility = View.VISIBLE
-            viewModel.getAllCustomers()
-        }
-
     }
 }

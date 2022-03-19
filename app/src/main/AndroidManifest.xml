@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomerList">
         <activity
+            android:name=".ui.profile.ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.newCustomer.NewCustomerActivity"
             android:exported="false" />
         <activity

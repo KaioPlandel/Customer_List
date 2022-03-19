@@ -5,9 +5,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface RetrofitService {
 
@@ -16,6 +14,19 @@ interface RetrofitService {
 
     @POST("Project/app/customers")
     fun addNewCustomer(@Body customerItem: CustomerItem): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @PUT("/customers/{id}")
+    fun updateCustomer(
+        @Path("id") id:Int,
+        @Field("name")name: String,
+        @Field("email")email: String,
+        @Field("phone")phone: String
+        ): Call<CustomerItem>
+
+
+    @DELETE("/customers/{id}")
+    fun deleteCustomer(@Path("id") id: Int): Call<Unit>
 
     companion object {
 
