@@ -11,18 +11,15 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class NewCustomerViewModel constructor(private val repository: CustomerRepository) : ViewModel() {
-
     var status = MutableLiveData<Boolean>()
 
-    fun addNewCustomer( customerItem: CustomerItem){
-
-        var request = repository.addNewCustomer(customerItem)
-
-        request.enqueue(object : Callback<ResponseBody>{
+    fun addNewCustomer(customerItem: CustomerItem) {
+        val request = repository.addNewCustomer(customerItem)
+        request.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     status.postValue(true)
-                }else {
+                } else {
                     status.postValue(true)
                 }
             }
@@ -31,10 +28,6 @@ class NewCustomerViewModel constructor(private val repository: CustomerRepositor
                 Log.d("TAG", "onFailure: " + t.message)
                 status.postValue(false)
             }
-
         })
-
     }
-
-
 }

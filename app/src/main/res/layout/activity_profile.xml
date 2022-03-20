@@ -25,13 +25,13 @@
                 android:id="@+id/buttonUpdateBack"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
+                android:contentDescription="@string/menu_back"
                 android:src="@drawable/back_arrow"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.06"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/menu_back" />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -93,9 +93,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/editEmailUpdate"
-                    android:inputType="textWebEmailAddress"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -112,10 +112,12 @@
                     android:layout_height="wrap_content"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <Button
                     android:id="@+id/buttonUpdateClient"
                     android:layout_width="0dp"
@@ -125,13 +127,14 @@
                     android:layout_weight="1"
                     android:text="@string/update"
                     android:textColor="@color/black" />
+
                 <ImageView
                     android:id="@+id/buttonDelete"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
-                    android:src="@drawable/ic_delete"
-                    android:contentDescription="@string/button_delete" />
+                    android:contentDescription="@string/button_delete"
+                    android:src="@drawable/ic_delete" />
 
 
             </LinearLayout>

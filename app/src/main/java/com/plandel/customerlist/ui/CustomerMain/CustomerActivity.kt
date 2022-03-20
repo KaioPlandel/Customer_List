@@ -16,7 +16,7 @@ import com.plandel.customerlist.ui.newCustomer.NewCustomerActivity
 
 
 class CustomerActivity : AppCompatActivity() {
-    lateinit var binding: ActivityCustomerBinding
+    lateinit var binding: com.plandel.customerlist.databinding.ActivityCustomerBinding
     lateinit var viewModel: CustomerViewModel
     val retrofitService = RetrofitService.getRetrofitInstance()
     var adapter = CustomerAdapter()
@@ -30,29 +30,21 @@ class CustomerActivity : AppCompatActivity() {
             CustomerViewModelFactory(CustomerRepository(retrofitService))
         ).get(CustomerViewModel::class.java)
 
-
         setupListeners()
         setupRecyclerView()
         setupObservers()
-
     }
 
     override fun onStart() {
         super.onStart()
-
         viewModel.listOfCustomers.observe(this, Observer {
             adapter.setData(it)
         })
 
         viewModel.getAllCustomers()
-
     }
 
     private fun setupObservers() {
-        viewModel.errorMessage.observe(this, Observer {
-            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-        })
-
         viewModel.loading.observe(this, Observer {
             if (it) {
                 showProgressBar()
@@ -62,18 +54,15 @@ class CustomerActivity : AppCompatActivity() {
         })
 
         viewModel.errorScreen.observe(this, Observer {
-
             if (it) {
                 showScreenError()
             } else {
                 hideScreenError()
             }
-
         })
     }
 
     private fun setupRecyclerView() {
-
         binding.recyclercustomer.layoutManager = LinearLayoutManager(this)
         binding.recyclercustomer.adapter = adapter
     }
@@ -85,11 +74,11 @@ class CustomerActivity : AppCompatActivity() {
             }
         }
 
-        binding.buttonReload.setOnClickListener {
+        binding.layoutError.setOnClickListener {
             binding.progressMenu.visibility = View.VISIBLE
+            binding.buttonReload.visibility = View.GONE
             viewModel.getAllCustomers()
         }
-
     }
 
     private fun hideScreenError() {
@@ -100,6 +89,7 @@ class CustomerActivity : AppCompatActivity() {
 
     private fun showScreenError() {
         binding.recyclercustomer.visibility = View.GONE
+        binding.buttonReload.visibility = View.VISIBLE
         binding.layoutError.visibility = View.VISIBLE
     }
 

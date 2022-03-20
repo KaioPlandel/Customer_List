@@ -4,11 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.plandel.customerlist.repository.CustomerRepository
 
-class ProfileViewModelfactory constructor(private val repository: CustomerRepository) : ViewModelProvider.Factory {
+class ProfileViewModelfactory constructor(private val repository: CustomerRepository) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if(modelClass.isAssignableFrom(ProfileViewModel::class.java)){
+        if (modelClass.isAssignableFrom(ProfileViewModel::class.java)) {
             return ProfileViewModel(repository) as T
-        }else {
+        } else {
             throw IllegalArgumentException("View Model Not Found!")
         }
     }

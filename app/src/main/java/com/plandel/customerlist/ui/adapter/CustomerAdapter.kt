@@ -36,8 +36,8 @@ class CustomerAdapter : RecyclerView.Adapter<CustomerAdapter.MyViewHolder>() {
         holder.email.text = customer.email
         holder.phone.text = customer.phone
         holder.layoutbutton.setOnClickListener {
-           val intent = Intent(it.context,ProfileActivity::class.java).also {
-                it.putExtra("customer",customer)
+            val intent = Intent(it.context, ProfileActivity::class.java).also {
+                it.putExtra("customer", customer)
             }
             it.context.startActivity(intent)
         }

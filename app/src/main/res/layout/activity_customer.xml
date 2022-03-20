@@ -34,7 +34,7 @@
                 android:id="@+id/recyclercustomer"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:background="@drawable/body_border_top"
+                android:background="@drawable/body_border"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -58,10 +58,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:visibility="gone"
-                android:background="@drawable/body_border_top"
+                android:background="@drawable/body_border"
                 android:orientation="vertical"
-
-
                 >
 
                 <TextView
@@ -87,8 +85,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textError"
-                    app:layout_constraintVertical_bias="0.107" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

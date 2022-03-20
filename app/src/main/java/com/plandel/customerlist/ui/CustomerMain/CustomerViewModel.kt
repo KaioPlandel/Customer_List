@@ -10,14 +10,11 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class CustomerViewModel constructor(private val repository: CustomerRepository) : ViewModel() {
-
     val listOfCustomers = MutableLiveData<List<CustomerItem>>()
-    val errorMessage = MutableLiveData<String>()
     val loading = MutableLiveData<Boolean>()
     val errorScreen = MutableLiveData<Boolean>()
 
     fun getAllCustomers() {
-
         val request = repository.getAllCustomers()
 
         request.enqueue(object : Callback<List<CustomerItem>> {
@@ -33,19 +30,14 @@ class CustomerViewModel constructor(private val repository: CustomerRepository) 
                 } else {
                     loading.postValue(false)
                     Log.d("TAG", "onResponse2: " + response.message())
-                    errorMessage.postValue(response.message())
                     errorScreen.postValue(true)
                 }
             }
 
             override fun onFailure(call: Call<List<CustomerItem>>, t: Throwable) {
                 loading.postValue(false)
-                errorMessage.postValue(t.message)
                 errorScreen.postValue(true)
             }
-
         })
-
     }
-
 }

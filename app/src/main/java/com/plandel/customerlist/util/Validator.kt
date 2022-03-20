@@ -1,20 +1,15 @@
 package com.plandel.customerlist.util
 
-import android.widget.Toast
-
 object Validator {
-
-     fun checkInputs(name: String, email: String, phone: String): Boolean {
-
-        if (!name.isEmpty()) {
-            if (!email.isEmpty() && email.contains("@") && !email.contains(" ") && email.contains(".")) {
-                return !phone.isEmpty()
-            } else {
-                return false
-            }
-        } else {
-            return false
-        }
+    fun checkEmail(email: String): Boolean {
+        return email.isNotEmpty() && email.contains("@") && !email.contains(" ") && email.contains(".")
     }
 
+    fun checkName(name: String): Boolean {
+        return name.isNotEmpty()
+    }
+
+    fun checkPhone(phone: String): Boolean {
+        return (phone.isNotEmpty() && phone.length >= 10)
+    }
 }

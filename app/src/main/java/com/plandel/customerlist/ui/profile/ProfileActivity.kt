@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.plandel.customerlist.R
 import com.plandel.customerlist.api.RetrofitService
 import com.plandel.customerlist.databinding.ActivityProfileBinding
 import com.plandel.customerlist.model.CustomerItem
@@ -26,36 +27,44 @@ class ProfileActivity : AppCompatActivity() {
             this,
             ProfileViewModelfactory(CustomerRepository(retrofitService))
         ).get(ProfileViewModel::class.java)
-
         initViews()
         setupListeners()
         setupObservers()
     }
 
     private fun initViews() {
-
         val customer = intent.getSerializableExtra("customer") as CustomerItem
         binding.editNameUpdate.setText(customer.name)
         binding.editEmailUpdate.setText(customer.email)
         binding.editPhoneUpdate.setText(customer.phone)
     }
-    //update
+
     private fun setupListeners() {
+        //update
         binding.buttonUpdateClient.setOnClickListener {
             val customer = intent.getSerializableExtra("customer") as CustomerItem
             val name = binding.editNameUpdate.text.toString()
             val email = binding.editEmailUpdate.text.toString()
             val phone = binding.editPhoneUpdate.text.toString()
-
-            if (Validator.checkInputs(name, email, phone)) {
-                binding.progressProfile.visibility = View.VISIBLE
-                disableInputsAndClick()
-                val newCustomer = CustomerItem(email, customer.id, name, phone)
-                viewModel.updateCustomer(newCustomer)
-                finish()
-            }else {
-                Toast.makeText(this, "fill out all fields correctly", Toast.LENGTH_SHORT).show()
+            if (!Validator.checkName(name)) {
+                binding.editNameUpdate.error = "Name required"
+                binding.editNameUpdate.requestFocus()
+                return@setOnClickListener
             }
+            if (!Validator.checkEmail(email)) {
+                binding.editEmailUpdate.error = "Invalid email address"
+                binding.editEmailUpdate.requestFocus()
+                return@setOnClickListener
+            }
+            if (!Validator.checkPhone(phone)) {
+                binding.editPhoneUpdate.error = "Must be minimum 10 digits"
+                binding.editPhoneUpdate.requestFocus()
+                return@setOnClickListener
+            }
+            binding.progressProfile.visibility = View.VISIBLE
+            disableInputsAndClick()
+            val newCustomer = CustomerItem(email, customer.id, name, phone)
+            viewModel.updateCustomer(newCustomer)
         }
 
         //delete
@@ -65,22 +74,7 @@ class ProfileActivity : AppCompatActivity() {
             val customer = intent.getSerializableExtra("customer") as CustomerItem
             deleteCustomer(Integer.parseInt(customer.id))
         }
-
         binding.buttonUpdateBack.setOnClickListener { finish() }
-    }
-
-    private fun disableInputsAndClick() {
-        binding.editNameUpdate.isEnabled = false
-        binding.editEmailUpdate.isEnabled = false
-        binding.editPhoneUpdate.isEnabled = false
-        binding.buttonUpdateClient.isClickable = false
-    }
-
-    private fun enableInputAndClick() {
-        binding.editNameUpdate.isEnabled = true
-        binding.editEmailUpdate.isEnabled = true
-        binding.editPhoneUpdate.isEnabled = true
-        binding.buttonUpdateClient.isClickable = true
     }
 
     private fun setupObservers() {
@@ -92,18 +86,29 @@ class ProfileActivity : AppCompatActivity() {
             } else {
                 enableInputAndClick()
                 binding.progressProfile.visibility = View.GONE
-                Toast.makeText(this, "Error, Try Again!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, R.string.error_message, Toast.LENGTH_SHORT).show()
             }
         })
 
-        viewModel.message.observe(this, Observer {
-            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
-        })
     }
 
     private fun deleteCustomer(id: Int) {
         viewModel.deleteCustomer(id)
     }
 
+    private fun disableInputsAndClick() {
+        binding.editNameUpdate.isEnabled = false
+        binding.editEmailUpdate.isEnabled = false
+        binding.editPhoneUpdate.isEnabled = false
+        binding.buttonUpdateClient.isClickable = false
+        binding.buttonDelete.isClickable = false
+    }
 
+    private fun enableInputAndClick() {
+        binding.editNameUpdate.isEnabled = true
+        binding.editEmailUpdate.isEnabled = true
+        binding.editPhoneUpdate.isEnabled = true
+        binding.buttonUpdateClient.isClickable = true
+        binding.buttonDelete.isClickable = true
+    }
 }

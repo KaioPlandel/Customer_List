@@ -2,7 +2,7 @@
     <string name="app_name">Customer List</string>
     <string name="logo_customer_list">Logo Customer List</string>
     <string name="button_new_client">Button New Client</string>
-    <string name="error_message">ops, something went wrong \n try again later</string>
+    <string name="error_message">Ops.. something went wrong \n try again</string>
     <string name="name">Name</string>
     <string name="email">Email</string>
     <string name="phone">Phone</string>
@@ -17,4 +17,7 @@
     <string name="customer">Customer</string>
     <string name="update">update</string>
     <string name="button_delete">button_delete</string>
+    <string name="message_success">Success</string>
+    <string name="message_error_add">"Error to add new customer, try again"</string>
+
 </resources>
