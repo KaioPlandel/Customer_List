@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.plandel.customerlist">
-
     <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
@@ -11,15 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CustomerList">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.profile.ProfileActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.newCustomer.NewCustomerActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.CustomerMain.CustomerActivity"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.intro.IntroActivity"
             android:exported="true">
             <intent-filter>

@@ -19,7 +19,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="0dp"
