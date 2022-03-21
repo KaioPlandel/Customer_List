@@ -1,9 +1,11 @@
 package com.plandel.customerlist.ui.profile
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.plandel.customerlist.R
@@ -14,7 +16,6 @@ import com.plandel.customerlist.repository.CustomerRepository
 import com.plandel.customerlist.util.Validator
 
 class ProfileActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityProfileBinding
     private lateinit var viewModel: ProfileViewModel
     private val retrofitService = RetrofitService.getRetrofitInstance()
@@ -35,6 +36,7 @@ class ProfileActivity : AppCompatActivity() {
     private fun initViews() {
         val customer = intent.getSerializableExtra("customer") as CustomerItem
         binding.editNameUpdate.setText(customer.name)
+        binding.nameProfile.text = customer.name
         binding.editEmailUpdate.setText(customer.email)
         binding.editPhoneUpdate.setText(customer.phone)
     }
@@ -69,12 +71,32 @@ class ProfileActivity : AppCompatActivity() {
 
         //delete
         binding.buttonDelete.setOnClickListener {
-            binding.progressProfile.visibility = View.VISIBLE
-            disableInputsAndClick()
-            val customer = intent.getSerializableExtra("customer") as CustomerItem
-            deleteCustomer(Integer.parseInt(customer.id))
+            AlertDialog.Builder(this)
+                .setTitle("Delete Customer")
+                .setMessage("Do you want to delete this customer?")
+                .setPositiveButton("Yes", DialogInterface.OnClickListener { _, _ ->
+                    binding.progressProfile.visibility = View.VISIBLE
+                    disableInputsAndClick()
+                    val customer = intent.getSerializableExtra("customer") as CustomerItem
+                    deleteCustomer(Integer.parseInt(customer.id))
+                    Toast.makeText(this,"Deleted",Toast.LENGTH_SHORT).show()
+                })
+                .setNegativeButton("No",DialogInterface.OnClickListener { _, _->
+                    return@OnClickListener
+                })
+                .create()
+                .show()
         }
+
         binding.buttonUpdateBack.setOnClickListener { finish() }
+
+        binding.phoneCall.setOnClickListener {
+            viewModel.callTo(this,binding.editPhoneUpdate.text.toString())
+        }
+
+        binding.emailSend.setOnClickListener {
+            viewModel.emailTo(this,binding.editEmailUpdate.text.toString())
+        }
     }
 
     private fun setupObservers() {

@@ -1,5 +1,8 @@
 package com.plandel.customerlist.ui.profile
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -48,4 +51,16 @@ class ProfileViewModel constructor(private val repository: CustomerRepository) :
             }
         })
     }
+
+    fun callTo(context: Context,number: String){
+        val intent = Intent(Intent.ACTION_DIAL)
+        intent.data = Uri.parse("tel: $number")
+        context.startActivity(intent)
+    }
+
+    fun emailTo(context: Context, email: String){
+        val intent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", email,null))
+        context.startActivity(intent)
+    }
+
 }

@@ -19,5 +19,7 @@
     <string name="button_delete">button_delete</string>
     <string name="message_success">Success</string>
     <string name="message_error_add">"Error to add new customer, try again"</string>
+    <string name="button_send_email">button_send_email</string>
+    <string name="button_call">Button_call</string>
 
 </resources>
