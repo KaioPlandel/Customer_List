@@ -17,5 +17,10 @@ Requirements:
 - Forms input must be validated upon submit (on changes is a plus)
 - At least one remote service must be queried for data
 
-![Screenshot_2022-03-20-23-14-58-094_com plandel customerlist](https://user-images.githubusercontent.com/85317117/159198431-3bbada1e-065f-4ea9-9919-98dafbcff808.jpg)
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/85317117/159198431-3bbada1e-065f-4ea9-9919-98dafbcff808.jpg" width="300" height="500" />
+</p>
+
+
+
 
